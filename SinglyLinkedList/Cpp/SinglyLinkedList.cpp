@@ -59,6 +59,24 @@ void SinglyLinkedList::insertLast(int key) {
     size++;
 }
 
+void SinglyLinkedList::insertAtPosition(int position, int key) {
+    if(isEmpty() || position == 0) {
+        insertFirst(key);
+        return;
+    } else if(position >= size) {
+        insertLast(key);
+        return;
+    }
+    Node* new_node = new Node(key);
+    Node* current = head;
+    for(int i = 0; i < position-1; i++) {
+        current = current->getNext();
+    }
+    new_node->setNext(current->getNext());
+    current->setNext(new_node);
+    size++;
+}
+
 void SinglyLinkedList::printLinkedList(void) {
     if(isEmpty()) {
         std::cout << "Empty.\n";

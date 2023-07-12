@@ -39,9 +39,9 @@ public:
 
     void insertLast(int key);
 
-    /*void insertAtPosition(int position, int key);
+    void insertAtPosition(int position, int key);
 
-    int removeFirst(void);
+    /*int removeFirst(void);
 
     int removeLast(void);
 
