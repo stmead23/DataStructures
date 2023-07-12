@@ -121,6 +121,29 @@ int SinglyLinkedList::removeLast(void) {
     }
 }
 
+int SinglyLinkedList::removeAtPosition(int position) {
+    if(isEmpty()) {
+        std::cout << "Empty. Instruction ignored.\n";
+        return 0;
+    } else if(position == 0) {
+        return removeFirst();
+    } else if(position == size-1) {
+        return removeLast();
+    } else if(position >= size) {
+        std::cout << "List not that long. Removing last element.\n";
+        return removeLast();
+    }
+    Node* current = head;
+    for(int i = 0; i < position-1; i++) {
+        current = current->getNext();
+    }
+    Node* remove = current->getNext();
+    current->setNext(remove->getNext());
+    int key = remove->getKey();
+    delete remove;
+    return key;
+}
+
 void SinglyLinkedList::printLinkedList(void) {
     if(isEmpty()) {
         std::cout << "Empty.\n";
