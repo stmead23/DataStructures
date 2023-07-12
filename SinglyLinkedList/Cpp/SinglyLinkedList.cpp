@@ -77,6 +77,23 @@ void SinglyLinkedList::insertAtPosition(int position, int key) {
     size++;
 }
 
+int SinglyLinkedList::removeFirst(void) {
+    if(head == nullptr) {
+        std::cout << "Empty. Instruction ignored.\n";
+        return 0;
+    }
+    Node* temp = head;
+    int key;
+    head = head->getNext();
+    if(head == nullptr) {
+        tail = nullptr;
+    }
+    key = temp->getKey();
+    delete temp;
+    size--;
+    return key;
+}
+
 void SinglyLinkedList::printLinkedList(void) {
     if(isEmpty()) {
         std::cout << "Empty.\n";

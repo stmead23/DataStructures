@@ -41,9 +41,9 @@ public:
 
     void insertAtPosition(int position, int key);
 
-    /*int removeFirst(void);
+    int removeFirst(void);
 
-    int removeLast(void);
+    /*int removeLast(void);
 
     int removeAtPosition(int position);*/
 
