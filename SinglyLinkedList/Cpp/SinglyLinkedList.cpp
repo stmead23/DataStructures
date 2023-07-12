@@ -46,3 +46,31 @@ void SinglyLinkedList::insertFirst(int key) {
     }
     size++;
 }
+
+void SinglyLinkedList::insertLast(int key) {
+    Node* new_node = new Node(key);
+    if(tail == nullptr) {
+        tail = new_node;
+        head = new_node;
+    } else {
+        tail->setNext(new_node);
+        tail = new_node;
+    }
+    size++;
+}
+
+void SinglyLinkedList::printLinkedList(void) {
+    if(isEmpty()) {
+        std::cout << "Empty.\n";
+        return;
+    }
+    Node* current = head;
+    while(current != nullptr) {
+        std::cout << current->getKey();
+        if(current->getNext() != nullptr) {
+            std::cout << " -> ";
+        }
+        current = current->getNext();
+    }
+    std::cout << std::endl;
+}

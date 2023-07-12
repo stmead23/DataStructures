@@ -5,18 +5,19 @@ int main(int argc, char * argv[]) {
     if(list.isEmpty()) {
         std::cout << "Empty.\n";
     }
-    list.insertFirst(5);
+    list.insertLast(5);
+    list.printLinkedList();
     list.insertFirst(4);
+    list.printLinkedList();
     list.insertFirst(3);
+    list.printLinkedList();
     list.insertFirst(2);
+    list.printLinkedList();
     list.insertFirst(1);
+    list.printLinkedList();
+    list.insertLast(6);
+    list.printLinkedList();
     std::cout << "First element: " << list.first() << std::endl;
     std::cout << "Last element: " << list.last() << std::endl;
-    std::cout << "Is 3 in the list? ";
-    if(list.foundKey(3)) {
-        std::cout << "Yes!\n";
-    } else {
-        std::cout << "No!\n";
-    }
     return 0;
 }

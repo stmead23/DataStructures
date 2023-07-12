@@ -37,15 +37,17 @@ public:
 
     void insertFirst(int key);
 
-    /*void insertLast(int key);
+    void insertLast(int key);
 
-    void insertAtPosition(int position, int key);
+    /*void insertAtPosition(int position, int key);
 
     int removeFirst(void);
 
     int removeLast(void);
 
     int removeAtPosition(int position);*/
+
+    void printLinkedList(void);
 };
 
 #endif
