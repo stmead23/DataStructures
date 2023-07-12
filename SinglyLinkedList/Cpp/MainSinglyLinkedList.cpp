@@ -32,7 +32,10 @@ int main(int argc, char * argv[]) {
     std::cout << "Removed key: " << list.removeLast() << std::endl;
     std::cout << "Removed key: " << list.removeAtPosition(2) << std::endl;
     list.printLinkedList();
-    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    list.removeByKey(3);
+    list.printLinkedList();
+    list.removeByKey(10);
+    list.printLinkedList();
     std::cout << "Removed key: " << list.removeLast() << std::endl;
     std::cout << "Removed key: " << list.removeLast() << std::endl;
     std::cout << "Removed key: " << list.removeLast() << std::endl;

@@ -141,7 +141,34 @@ int SinglyLinkedList::removeAtPosition(int position) {
     current->setNext(remove->getNext());
     int key = remove->getKey();
     delete remove;
+    size--;
     return key;
+}
+
+void SinglyLinkedList::removeByKey(int key) {
+    if(isEmpty()) {
+        std::cout << "Empty. Instruction ignored.\n";
+        return;
+    }
+    if(head->getKey() == key) {
+        removeFirst();
+        return;
+    }
+    if(tail->getKey() == key) {
+        removeLast();
+        return;
+    }
+    Node* current = head->getNext();
+    int position = 1;
+    while(current != nullptr) {
+        if(current->getKey() == key) {
+            removeAtPosition(position);
+            return;
+        }
+        current = current->getNext();
+        position++;
+    }
+    std::cout << "Error, key not found. Instruction ignored.\n";
 }
 
 void SinglyLinkedList::printLinkedList(void) {

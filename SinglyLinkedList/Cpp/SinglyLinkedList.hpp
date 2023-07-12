@@ -47,7 +47,7 @@ public:
 
     int removeAtPosition(int position);
     
-    //void removeByKey(int key);
+    void removeByKey(int key);
 
     void printLinkedList(void);
 };
