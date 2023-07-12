@@ -18,7 +18,7 @@ int SinglyLinkedList::first(void) {
 }
 
 int SinglyLinkedList::last(void) {
-    if(isEmpty()) {
+    if(tail == nullptr) {
         return 0;
     }
     return tail->getKey();
@@ -92,6 +92,33 @@ int SinglyLinkedList::removeFirst(void) {
     delete temp;
     size--;
     return key;
+}
+
+int SinglyLinkedList::removeLast(void) {
+    if(tail == nullptr) {
+        std::cout << "Empty. Instruction ignored.\n";
+        return 0;
+    }
+    int key;
+    if(head == tail) {
+        head = nullptr;
+        key = tail->getKey();
+        delete tail;
+        tail = nullptr;
+        size--;
+        return key;
+    } else {
+        Node* new_tail = head;
+        while(new_tail->getNext() != tail) {
+            new_tail = new_tail->getNext();
+        }
+        new_tail->setNext(nullptr);
+        key = tail->getKey();
+        delete tail;
+        tail = new_tail;
+        size--;
+        return key;
+    }
 }
 
 void SinglyLinkedList::printLinkedList(void) {

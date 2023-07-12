@@ -29,14 +29,14 @@ int main(int argc, char * argv[]) {
     std::cout << "First element: " << list.first() << std::endl;
     std::cout << "Last element: " << list.last() << std::endl;
 
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
-    std::cout << "Removed key: " << list.removeFirst() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
+    std::cout << "Removed key: " << list.removeLast() << std::endl;
 
     return 0;
 }
