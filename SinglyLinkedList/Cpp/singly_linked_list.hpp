@@ -8,10 +8,10 @@ private:
     class Node {
     private:
         int key;
-        Node* next;
+        Node* next = {nullptr};
     public:
         //Set the key when a new node is created, and set next to nullptr
-        Node(int k) : key(k), next(nullptr) {} 
+        Node(int k) : key(k) {} 
         //Return the key
         int getKey(void);
         //Return the next value. Used for iterating the list
@@ -20,13 +20,11 @@ private:
         void setNext(Node* n);
     };
     //Uses a head for the beginning of the list, and a tail for constant insertion and access
-    Node* head;
-    Node* tail;
+    Node* head = {nullptr};
+    Node* tail = {nullptr};
     //Keep track of the size to have constant time size checking
-    int size;
+    int size {0};
 public:
-    //Initialize the empty list
-    SinglyLinkedList(void) : head(nullptr), tail(nullptr), size(0) {}
     //Delete the entire list
     ~SinglyLinkedList(void);
     //Return the current size of the list
