@@ -1,4 +1,4 @@
-#include "SinglyLinkedList.hpp"
+#include "singly_linked_list.hpp"
 
 //Return the key
 int SinglyLinkedList::Node::getKey() { return key; }
