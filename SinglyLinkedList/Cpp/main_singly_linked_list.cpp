@@ -1,4 +1,4 @@
-#include "SinglyLinkedList.hpp"
+#include "singly_linked_list.hpp"
 
 int main(int argc, char * argv[]) {
     SinglyLinkedList list1;
