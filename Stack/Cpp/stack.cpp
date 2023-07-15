@@ -1,7 +1,6 @@
 #include "stack.hpp"
 #include <iostream>
-
-Stack::~Stack(void) {}
+#include <stdlib.h>
 
 int Stack::getSize(void) { return current_size; }
 

@@ -9,8 +9,6 @@ private:
 public:
     Stack(int s) : max_size(s), stack(new int[s]) {}
 
-    ~Stack(void);
-
     int getSize(void);
 
     bool isEmpty(void);
