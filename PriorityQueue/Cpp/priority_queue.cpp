@@ -1,13 +1,23 @@
 #include "priority_queue.hpp"
 #include <__config>
+#include <algorithm>
 
 int PriorityQueue::Node::getKey(void) { return key; }
 
-char PriorityQueue::Node::getValue(void) { return value; }
-        
-PriorityQueue::Node* PriorityQueue::Node::getNext(void) { return next; }
+void PriorityQueue::Node::setKey(int k) { key = k; }
 
-void PriorityQueue::Node::setNext(PriorityQueue::Node* n) { next = n; }
+char PriorityQueue::Node::getValue(void) { return value; }
+
+void PriorityQueue::Node::setValue(char v) { value = v; }
+
+void PriorityQueue::nodeSwitch(Node* a, Node* b) {
+    int temp1 = a->getKey();
+    char temp2 = a->getValue();
+    a->setKey(b->getKey());
+    a->setValue(b->getValue());
+    b->setKey(temp1);
+    b->setValue(temp2);
+}
 
 int PriorityQueue::getSize(void) { return size; }
 
@@ -17,33 +27,28 @@ char PriorityQueue::min(void) {
     if (isEmpty()) {
         return '\0';
     }
-    return head->getValue();
+    return p_queue[front]->getValue();
 }
 
 void PriorityQueue::insert(int key, char value) {
-    Node* new_node = new Node(key, value);
+    if (size >= 10000) {
+        std::cout << "Full. Can't add.\n";
+        return;
+    }
+    int location = (front + size) % 10000;
+    p_queue[location] = new Node(key, value);
+    int i = location;
     size++;
-    if (head == nullptr) {
-        head = new_node;
+    if(size == 1) {
         return;
     }
-    if (key < head->getKey()) {
-        new_node->setNext(head);
-        head = new_node;
-        return;
-    }
-    
-    Node* current = head;
-    while (current->getNext() != nullptr) {
-        if (key < current->getNext()->getKey()) {
+    do {
+        if (p_queue[i-1]->getKey() <= p_queue[i]->getKey()) {
             break;
         }
-        current = current->getNext();
-    }
-    if (current->getNext() != nullptr) {
-        new_node->setNext(current->getNext());
-    }
-    current->setNext(new_node);
+        nodeSwitch(p_queue[i], p_queue[i-1]);
+        i = (i-1) % 10000;
+    } while (i != front);
 }
 
 char PriorityQueue::removeMin(void) {
@@ -52,9 +57,9 @@ char PriorityQueue::removeMin(void) {
         return '\0';
     }
     char value = min();
-    Node* temp = head;
-    head = head->getNext();
-    delete temp;
+    delete p_queue[front];
+    front = (front + 1) % 10000;
+    size--;
     return value;
 }
 
@@ -63,13 +68,11 @@ void PriorityQueue::printPriorityQueue(void) {
         std::cout << "Empty\n";
         return;
     }
-    Node* current = head;
-    while (current != nullptr) {
-        std::cout << "(" << current->getKey() << ", " << current->getValue() << ")";
-        if (current->getNext() != nullptr) {
-            std::cout << " -> ";
-        }
-        current = current->getNext();
-    }
+    int i = front;
+    int last = (front + size) % 10000;
+    do {
+        std::cout << p_queue[i]->getKey() << " ";
+        i = (i + 1) % 10000;
+    } while (i != last);
     std::cout << std::endl;
 }

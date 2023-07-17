@@ -8,21 +8,28 @@ private:
     private:
         int key;
         char value;
-        Node* next = {nullptr};
     public:
         Node(int k, char v) : key(k), value(v) {}
         
         int getKey(void);
+
+        void setKey(int k);
         
         char getValue(void);
-        
-        Node* getNext(void);
-        
-        void setNext(Node* n);
+
+        void setValue(char v);
     };
-    Node* head = {nullptr};
+    Node* p_queue[10000];
+    int front = {0};
     int size = {0};
+    void nodeSwitch(Node* a, Node* b);
 public:
+    PriorityQueue(void) {
+        for(int i = 0; i < 10000; i++) {
+            p_queue[i] = nullptr;
+        }
+    } 
+
     int getSize(void);
 
     bool isEmpty(void);
