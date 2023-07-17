@@ -1,6 +1,5 @@
 #include "priority_queue.hpp"
 #include <__config>
-#include <algorithm>
 
 int PriorityQueue::Node::getKey(void) { return key; }
 
